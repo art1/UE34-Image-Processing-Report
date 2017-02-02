@@ -1,7 +1,6 @@
 clear all, close all, clc ;
 
 I = imread('SpainBeach.png') ;
-figure, imshow(I) ;
 
 [U,V,d] = size(I) ;
 I = double(I) ;
@@ -65,11 +64,17 @@ end
 
 figure, 
 subplot(2,2,1), imshow(uint8(I)) ; 
+title('spain beach - original');
 subplot(2,2,2), imshow(MaskClasses==1) ;
+title('spain beach - beach (class 1)');
 subplot(2,2,3), imshow(MaskClasses==2) ;
-subplot(2,2,4), imshow(MaskClasses==3) ;      
-             
-figure, imshow(MaskClasses==3) ;        
+title('spain beach - vegetation (class 2)');
+subplot(2,2,4), imshow(MaskClasses==3) ;    
+title('spain beach - water (class 3)');
+
+set(gcf, 'PaperUnits', 'points');
+set(gcf, 'PaperPosition', [0 0 900 600]);
+saveas(gcf,'../images/kNN.png');
              
              
              
