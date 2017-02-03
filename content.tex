@@ -6,10 +6,17 @@ Image processing and the analysis of image data plays an important role especial
 From a mathematical point of view,an Image is an application that associates a value $I(u,v)$ to a pixel $(u,v)$. Pixels are atomic elements arranged in rows and columns,  such that the size of an image is given by the number of rows and the number of columns. Therefore, an image can be processed by using a matrix representation, where each matrix element $(u,v)$  represents a pixel containing the value $I(u,v)$ of the pixel.. In the case of multispectral images, i.e. colour images like RGB images (see following chapter), an image is an application that associates saveral values, e.g. $I_{1}(u,v)$ $I_{2}(u,v)$ and $I_{3}(u,v)$ to a pixel $(u,v)$, where the values $I_{i}$ represent a different colour like red, green and blue in RGB images. Therefore, each matrix element $(u,v)$ contains a vector of values. This matrix notation is the basic of image processing using Matlab.
 
 \section{Greyscale and Colour images}
+\subsection{Greyscale Images}
+Greyscale images are basic images where the value of each pixel e.g. is associated to a value between 0, which is black, to 1 for bright. An example including an optical illusion is presented in image \ref{fig:greyillusion}. For this image, a $512\times 1024$ matrix was created with increasing values from 0 to 1 along each line. in the middle of the image, a stripe of  constant values %0.5% was created. By just concentrating on the upper and lower part of the image, one can see how the brightness increases from left to right. Although the middle layer consists of the same greyscale value for the individual pixels, it appears to be brighter in on the left and darker on the right. This is an optical illusion created by the increasing brightness from left to right of the upper and lower part.
+
+\begin{figure}[!h]
+	\centering
+		\includegraphics[width=\textwidth]{images/greyillusion.png}
+		\caption{Greyscale image with optical illusion.}
+		\label{fig:greyillusion}
+\end{figure}
 
 
-
- 
 \subsection{Filtering}
 
 \subsection{Image Processing \& Analysis}
