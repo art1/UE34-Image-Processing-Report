@@ -71,14 +71,74 @@ A very important fact regarding multispectral images is that there is a tradeoff
 		\label{fig:hrlrmixing}
 \end{figure}
 
+\subsection{Image processing and image analysis with Fouriertransform}
+Fouriertransforms are a very important tool to analyse images. The fourier transform describes a reversible transformation from space domain into the fourier domain given by the following relation:
 
-\subsection{Filtering}
+\begin{equation*}
+\hat{I}(u,v)=\sum^{U-1}_{u=0}\sum^{V-1}_{v=0} I\left(u,v\right)\cdot e^{-j2\pi\left(\frac{f\cdot u}{U}+\frac{g\cdot v}{V}\right)}
+\end{equation*}
+As examples figures to show the fourier transforms of several fundamental shapes. The shape images are created in greyscale by setting every pixel outside the shape itself to $0$, while the shape is defined by pixels using the value one $1$. The shapes that are investigated are a long band across the image, a square in the centre , a rectangle a the centre, and a circle at the image centre . The fourier transform of the first shows a sinc function along the Y-axis (lines), since the band can be seen as a rectangle function along the line-axis, whereas the fourier transformation is extremely thin along the x axis, since it is a constant (of 0) along the x-axis. Similar to that, a sinc-function along both axis results for the fouriertransform of the square, since the square can be seen as a 2D rectangular function. In analogy, the a sinc-function results from the rectangle. However, the sidelobes are more narrow for the y-axis (lines), since the rectangle in the image space is broader along the line-axis. Finally, the fourier transform of the circle are Bessel functions, which are similar to the sinc functions, but show a circular symmetry. 
 
-\subsection{Image Processing \& Analysis}
 
-\subsection{Pattern Recognition}
 
-\subsection{Geometry}
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/bar.png}
+		\caption{Bar image}
+		\label{fig:bar}
+	\end{minipage}
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/fouriertrafobar.png}
+		\caption{Fourier transform of bar}
+		\label{fig:fouriertrafobar}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/square.png}
+		\caption{Image of square}
+		\label{fig:bar}
+	\end{minipage}
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/fouriertrafosquare.png}
+		\caption{Fourier transform of square }
+		\label{fig:fouriertrafosquare}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/Rectangle.png}
+		\caption{Rectangle image}
+		\label{fig:rectangle}
+	\end{minipage}
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/fouriertraforectangle.png}
+		\caption{Fourier transform of bar}
+		\label{fig:fouriertraforectangle}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/circle.png}
+		\caption{Image of circle}
+		\label{fig:bar}
+	\end{minipage}
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/fouriertrafocircle.png}
+		\caption{Fourier transform of circle}
+		\label{fig:fouriertrafocircle}
+	\end{minipage}
+\end{figure}
+
+Understanding the handling between image space and fourier space is useful for image processing. For example, one can identify frequent elements in an image by taking a look at the fouriertransformation. These frequent elements can then e.g. filtered out by a filter, such that the processed image only contains a certain element like e.g. a footballfield or certain region of vegetation.
+
 
 
 %%%%%%%%%%%%%%%%% TASK 3 %%%
