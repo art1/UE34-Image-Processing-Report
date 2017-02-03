@@ -1,9 +1,34 @@
 %%%%%%%%%%%%%%%%% TASK 1 %%%
-\section{Image Processing for Earth Observation}
-
-\subsection{Space Imagery}
+\section{Introduction - Image Processing for Earth Observation}
+Image processing and the analysis of image data plays an important role especially for Earth Observations, but also in other fields related to space applications that make use of images, e.g. optical navigation or optical attitude control systems. In this report, we present a thorough overview of examples for image processing techniques, especially applying examples in Matlab. We focus on colour spaces for images, fourier transforms of basic figures, erosion and delatation and classification. 
 
 \subsection{Computer Vision}
+From a mathematical point of view, an image is an application that associates a value $I(u,v)$ to a pixel $(u,v)$. Pixels are atomic elements arranged in rows and columns,  such that the size of an image is given by the number of rows and the number of columns. Therefore, an image can be processed by using a matrix representation, where each matrix element $(u,v)$  represents a pixel containing the value $I(u,v)$ of the pixel.. In the case of multispectral images, i.e. colour images like RGB images (see following chapter), an image is an application that associates saveral values, e.g. $I_{1}(u,v)$ $I_{2}(u,v)$ and $I_{3}(u,v)$ to a pixel $(u,v)$, where the values $I_{i}$ represent a different colour like red, green and blue in RGB images. Therefore, each matrix element $(u,v)$ contains a vector of values. This matrix notation is the basic of image processing using Matlab.
+
+\section{Greyscale and Colour images}
+The understanding of colour images and the connection to their greyscale representation are fundamental for image analysis and image processing. We illustrate colour images in this section by  considering the examples of RGB and HVS colour space. There are also other colour spaces like CYMK (cyan, yellow, magenta, black) or YUV, but we only consider the first two in our examples since these are the most frequently used ones and essential for the understanding of coloured images. CYMK and YUV are mainly based on the first two colour spaces.
+\subsection{Greyscale Images}
+Greyscale images are basic images where the value of each pixel e.g. is associated to a value between 0, which is black, to 1 for bright. An example including an optical illusion is presented in image \ref{fig:greyillusion}. For this image, a $512\times 1024$ matrix was created in Matlab, first being black by associating a zero to each element, but then was filled with increasing values from 0 to 1 along each line. in the middle of the image, a stripe of  constant values %0.5% was created. By just concentrating on the upper and lower part of the image, one can see how the brightness increases from left to right. Although the middle layer consists of the same greyscale value for the individual pixels, it appears to be brighter in on the left and darker on the right. This is an optical illusion created by the increasing brightness from left to right of the upper and lower part.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=\textwidth]{images/greyillusion.png}
+		\caption{Greyscale image with optical illusion.}
+		\label{fig:greyillusion}
+\end{figure}
+
+\subsection{RGB}
+As mentioned before, in the case of a color image, 3 values are associated to each pixel in an RGB image, representing 8bit unsigned integer values (UINT8) for the colours of red, green and blue. By mixing these values for the colours, one can create any colour for the individual pixel. For the pixel to appear black, all the values for each pixel have to be 0, while they are 1 for a white image, which represents the additive nature of RGB images. As an example, we created the German flag by creating a $300\times500$ matrix, where the values for each pixel in the first 100 lines are set to 0, to 1 for $I_{R}$ (red) and  0 for the other two in the lines from 101 to 200, and finally to $I_{R}=250$,$ I_{G}=215$ and $I_{B}=0$ in order to achieve a gold colour for the lower lines. 
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=\textwidth]{images/germanflag.png}
+		\caption{RGB image of the German flag.}
+		\label{fig:germanflag}
+\end{figure}
+
+\subsection{HVS Colour Space}
+
 
 \subsection{Filtering}
 
