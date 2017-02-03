@@ -148,10 +148,25 @@ Morphological operators are applied t detect forms in an image. For this, one ca
 \subsection{Erosion \& Dilatation}
 In a mathematical point of view, erosion $\epsilon$ is defined as
 
+<<<<<<< HEAD
 \begin{equation*}
 I_{\delta}(p)=\delta I = \underset{p \in V}\min \text{ } I(p)
 \end{equation*}
 where $I(p)$ is the greyscale image. Therefore, erosion $\epsilon$ as the value of $p$ that minimizes $I(p)$ in a given neighbourhood. In analogy, dilatation is defined as:
+=======
+\subsection{Morphological Filtering}
+Morphological Filtering describes a technique that is closely related to operations on the morphology, or shape of structures and features within an image.
+
+Four general filters are the Opening, Closing, Top-Hat and Black-Hat Filters. The morphological opening filter is basically an erosion (\todo{add ref} ) followed by a dilatation - which allows to remove small bright spots (spots that are smaller than the structuring element that is defined by the user) and connect dark features. The closing filter is exactly the opposite.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{images/morphFilter.png}
+	\caption{Morphological Filters}
+	\label{fig:morphFilt}
+\end{figure}
+>>>>>>> ed89a73b1be4703f37b3f16ec0e472f92d46decc
 
 \begin{equation*}
 I_{\epsilon}(p)=\epsilon I = \underset{p \in V}\max \text{ } I(p)
@@ -330,3 +345,7 @@ One can observe that the clustering worked very well in detecting the sea, veget
 If the data to be analysed has a huge i.e. the data dimension is too big (in images this corresponds to large images), one has to reduce the data dimension to reduce the computational amount to find clusters or classes in the data. This is usually done using a technique called \textit{Principal Component Analysis} or in short PCA, where the input data is linearly mapped to new data that has a reduced state space. In practical terms this is usually done by calculating the covariance matrix and its eigenvectors. The eigenvectors corresponding to the largest eigenvalues (also called the principal components) can then be used to reconstruct a great part of the original image.
 \todo[inline]{put in some MATLAB Code and images here for PCA}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+
+;
