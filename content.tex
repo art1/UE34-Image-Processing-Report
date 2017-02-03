@@ -3,13 +3,13 @@
 Image processing and the analysis of image data plays an important role especially for Earth Observations, but also in other fields related to space applications that make use of images, e.g. optical navigation or optical attitude control systems. In this report, we present a thorough overview of examples for image processing techniques, especially applying examples in Matlab. We focus on colour spaces for images, fourier transforms of basic figures, erosion and delatation and classification. 
 
 \subsection{Computer Vision}
-From a mathematical point of view, an image is an application that associates a value $I(u,v)$ to a pixel $(u,v)$. Pixels are atomic elements arranged in rows and columns,  such that the size of an image is given by the number of rows and the number of columns. Therefore, an image can be processed by using a matrix representation, where each matrix element $(u,v)$  represents a pixel containing the value $I(u,v)$ of the pixel.. In the case of multispectral images, i.e. colour images like RGB images (see following chapter), an image is an application that associates saveral values, e.g. $I_{1}(u,v)$ $I_{2}(u,v)$ and $I_{3}(u,v)$ to a pixel $(u,v)$, where the values $I_{i}$ represent a different colour like red, green and blue in RGB images. Therefore, each matrix element $(u,v)$ contains a vector of values. This matrix notation is the basic of image processing using Matlab.
+From a mathematical point of view, an image is an application that associates a value $I(u,v)$ to a pixel $(u,v)$. Pixels are atomic elements arranged in rows and columns,  such that the size of an image is given by the number of rows and the number of columns. Therefore, an image can be processed by using a matrix representation, where each matrix element $(u,v)$  represents a pixel containing the value $I(u,v)$ of the pixel.. In the case of multispectral images, i.e. colour images like RGB images (see following chapter), an image is an application that associates several values, e.g. $I_{1}(u,v)$ $I_{2}(u,v)$ and $I_{3}(u,v)$ to a pixel $(u,v)$, where the values $I_{i}$ represent a different colour like red, green and blue in RGB images. Therefore, each matrix element $(u,v)$ contains a vector of values. This matrix notation is the basic of image processing using Matlab.
 
 \section{Greyscale and Colour images}
 The understanding of colour images and the connection to their greyscale representation are fundamental for image analysis and image processing. We illustrate colour images in this section by  considering the examples of RGB and HSV colour space. There are also other colour spaces like CYMK (cyan, yellow, magenta, black) or YUV, but we only consider the first two in our examples since these are the most frequently used ones and essential for the understanding of coloured images. CYMK and YUV are mainly based on the first two colour spaces.
 
 \subsection{Greyscale Images}
-Greyscale images are basic images where the value of each pixel e.g. is associated to a value between 0, which is black, to 1 for bright. An example including an optical illusion is presented in image \ref{fig:greyillusion}. For this image, a $512\times 1024$ matrix was created in Matlab, first being black by associating a zero to each element, but then was filled with increasing values from 0 to 1 along each line. in the middle of the image, a stripe of  constant values %0.5% was created. By just concentrating on the upper and lower part of the image, one can see how the brightness increases from left to right. Although the middle layer consists of the same greyscale value for the individual pixels, it appears to be brighter in on the left and darker on the right. This is an optical illusion created by the increasing brightness from left to right of the upper and lower part.
+Greyscale images are basic images where the value of each pixel e.g. is associated to a value between 0, which is black, to 1 for bright. An example including an optical illusion is presented in image \ref{fig:greyillusion}. For this image, a $512\times 1024$ matrix was created in Matlab, first being black by associating = to each element, but then was filled with increasing values from 0 to 1 along each line. in the middle of the image, a stripe of  constant values $0.5$ was created. By just concentrating on the upper and lower part of the image, one can see how the brightness increases from left to right. Although the middle layer consists of the same greyscale value for the individual pixels, it appears to be brighter in on the left and darker on the right. This is an optical illusion created by the increasing brightness from left to right of the upper and lower part.
 
 \begin{figure}[H]
 	\centering
@@ -19,7 +19,7 @@ Greyscale images are basic images where the value of each pixel e.g. is associat
 \end{figure}
 
 \subsection{RGB}
-As mentioned before, in the case of a color image, 3 values are associated to each pixel in an RGB image, representing 8bit unsigned integer values (UINT8) for the colours of red, green and blue. By mixing these values for the colours, one can create any colour for the individual pixel. For the pixel to appear black, all the values for each pixel have to be 0, while they are 1 for a white image, which represents the additive nature of RGB images. As an example, we created the German flag by creating a $300\times500$ matrix, where the values for each pixel in the first 100 lines are set to 0, to 1 for $I_{R}$ (red) and  0 for the other two in the lines from 101 to 200, and finally to $I_{R}=250$,$ I_{G}=215$ and $I_{B}=0$ in order to achieve a gold colour for the lower lines. 
+As mentioned before, in the case of a color image, 3 values are associated to each pixel in an RGB image, representing 8bit unsigned integer values (UINT8) for the colours of red, green and blue. By mixing these values for the colours, one can create any colour for the individual pixel. For the pixel to appear black, all the values of each pixel have to be 0, while they are 1 for a white image, which represents the additive nature of RGB images. As an example, we created the German flag by creating a $300\times500$ matrix, where the values for each pixel in the first 100 lines are set to 0, to 1 for $I_{R}$ (red) and  0 for the other two in the lines from 101 to 200, and finally to $I_{R}=250$,$ I_{G}=215$ and $I_{B}=0$ in order to achieve a gold colour for the lower lines. 
 
 \begin{figure}[H]
 	\centering
@@ -29,7 +29,7 @@ As mentioned before, in the case of a color image, 3 values are associated to ea
 \end{figure}
 
 \subsection{HSV Colour Space}
-The HSV colour space consists of a value for hue ($H$), which is a value for the colour or wavelength running from 0 to 1, saturation ($S$ ) describing the intensity of that colour also running from 0 to 1, and the value ($V$) describing the darkness or brightness. To illustrate this, the image \ref{fig:colourscalehsv} was created. A matrix of $512\times750$ elements was created. For each line, the $h$ value increases from left with 0 to right with 1, resulting in different colours for a spectrum along each line. For each column, the S value varies from 0 at the top of the image to 1 at the bottom. However, for all elements a brightness value of $V=1$ was chosen.
+The HSV colour space consists of a value for hue ($H$), which is a value for the colour or wavelength running from 0 to 1, saturation ($S$) describing the intensity of that colour also running from 0 to 1, and the value ($V$) describing the darkness or brightness. To illustrate this, the image \ref{fig:colourscalehsv} was created. A matrix of $512\times750$ elements was created. For each line, the $H$ value increases from left with 0 to right with 1, resulting in different colours for a spectrum along each line. For each column, the S value varies from 0 at the top of the image to 1 at the bottom. However, for all elements a brightness value of $V=1$ was chosen.
 
 \begin{figure}[H]
 	\centering
@@ -47,7 +47,7 @@ The HSV colour space consists of a value for hue ($H$), which is a value for the
 As an additional illustration, the HSV colour space is represented in the colour wheel shown in figure \ref{fig:colourwheelhsv}. Inside the wheel, the saturation gradually increases from inside to outside, while the hue value depends on the angle in the circle. Inside the circle, the brightness is chosen as a constant with $V=1$, while it is set to $0$ outside, resulting in the black frame around the circle.
 
 \subsection{PAN/XS Fusion}
-A very important fact regarding multispectral images is that there is a tradeoff between spatial resolution and spetral resolution for every image, also related to the sensors. Monochromatic images only require one channel, and therefore can have a very high spatial resolution while losing spectral information since they are monochromatic. On the other hand, multispectral images need several channels to store the various colour information, which results in a loss of spatial resolution. A very important application of image processing is therefore to fuse monochromatic images of high spatial resolution with multispectral images of low spectral resolution in order to achieve a high resolution multispectral image. An example of that is presented in figures \ref{fig:hyp_lr} to \ref{fig:hrlrmixing}. Figures \ref{fig:Ipan_hr} and \ref{fig:hyp_lr} show both the initial images, where one can clearly see the difference in spatial resolution between the monochromatic and the hyperspectral image and also the difference in size of the two images. In our algorithm, the latter is resized to the size of the monochromatic one, and then additionally extended by values of the high resolution image. The resulting multispectral image is presented in figure \ref{fig:hrlrmixing}. Note, that this image should actually have the same size as the first monochromatic image. One can see that the spatial resolution of the coloured image is improved now. There are a few regions, where the information from the monochromatic image fills up elements that werer empty due to the resizing operation.
+A very important fact regarding multispectral images is that there is a tradeoff between spatial resolution and spetral resolution for every image, also related to the sensors. Monochromatic images only require one channel, and therefore can have a very high spatial resolution while losing spectral information since they are monochromatic. On the other hand, multispectral images need several channels to store the various colour information, which results in a loss of spatial resolution. A very important application of image processing is therefore to fuse monochromatic images of high spatial resolution with multispectral images of low spatial resolution in order to achieve a high resolution multispectral image. An example of that is presented in figures \ref{fig:Ipan_hr} to \ref{fig:hrlrmixing}. Figures \ref{fig:Ipan_hr} and \ref{fig:hyp_lr} show both the initial images, where one can clearly see the difference in spatial resolution between the monochromatic and the hyperspectral image and also the difference in size of the two images. In our algorithm, the latter is resized to the size of the monochromatic one, and then additionally extended by values of the high resolution image. The resulting multispectral image is presented in figure \ref{fig:hrlrmixing}. Note, that this image should actually have the same size as the first monochromatic image. One can see that the spatial resolution of the coloured image is improved now. There are a few regions, where the information from the monochromatic image fills up elements that were empty due to the resizing operation.
 
 \begin{figure}[H]
 	\centering
@@ -77,7 +77,7 @@ Fouriertransforms are a very important tool to analyse images. The fourier trans
 \begin{equation*}
 \hat{I}(u,v)=\sum^{U-1}_{u=0}\sum^{V-1}_{v=0} I\left(u,v\right)\cdot e^{-j2\pi\left(\frac{f\cdot u}{U}+\frac{g\cdot v}{V}\right)}
 \end{equation*}
-As examples figures to show the fourier transforms of several fundamental shapes. The shape images are created in greyscale by setting every pixel outside the shape itself to $0$, while the shape is defined by pixels using the value one $1$. The shapes that are investigated are a long band across the image, a square in the centre , a rectangle a the centre, and a circle at the image centre . The fourier transform of the first shows a sinc function along the Y-axis (lines), since the band can be seen as a rectangle function along the line-axis, whereas the fourier transformation is extremely thin along the x axis, since it is a constant (of 0) along the x-axis. Similar to that, a sinc-function along both axis results for the fouriertransform of the square, since the square can be seen as a 2D rectangular function. In analogy, the a sinc-function results from the rectangle. However, the sidelobes are more narrow for the y-axis (lines), since the rectangle in the image space is broader along the line-axis. Finally, the fourier transform of the circle are Bessel functions, which are similar to the sinc functions, but show a circular symmetry. 
+As examples, figures \ref{fig:bar} to \ref{fig:fouriertrafocircle} show the fourier transforms of several fundamental shapes. The shape images are created in greyscale by setting every pixel outside the shape itself to $0$, while the shape is defined by pixels using the value one $1$. The shapes that are investigated are a long band across the image, a square in the centre , a rectangle a the centre, and a circle at the image centre . The fourier transform of the first shows a sinc function along the Y-axis (lines), since the band can be seen as a rectangle function along the line-axis, whereas the fourier transformation is extremely thin along the x axis, since it is a constant (of 0) along the x-axis. Similar to that, a sinc-function along both axis results for the fouriertransform of the square, since the square can be seen as a 2D rectangular function. In analogy, a sinc-function results from the rectangle. However, the sidelobes are more narrow for the y-axis (lines), since the rectangle in the image space is broader along the line-axis. Finally, the fourier transform of the circle are Bessel functions, which are similar to the sinc functions, but show a circular symmetry. 
 
 
 
@@ -137,40 +137,28 @@ As examples figures to show the fourier transforms of several fundamental shapes
 	\end{minipage}
 \end{figure}
 
-Understanding the handling between image space and fourier space is useful for image processing. For example, one can identify frequent elements in an image by taking a look at the fouriertransformation. These frequent elements can then e.g. filtered out by a filter, such that the processed image only contains a certain element like e.g. a footballfield or certain region of vegetation.
+Understanding the handling between image space and fourier space is useful for image processing. For example, one can identify frequent elements in an image by taking a look at the Fouriertransformation. These frequent elements can then e.g. be filtered out by a filter, such that the processed image only contains a certain element like e.g. a footballfield or certain region of vegetation.
 
 
 
 %%%%%%%%%%%%%%%%% TASK 3 %%%
 \section{Morphology}
-Morphological operators are applied t detect forms in an image. For this, one can use erosion $\epsilon$ and dilatation $\delta$, which both have very different effects on images. 
+Morphological operators are applied to detect forms in an image. For this, one can use erosion $\epsilon$ and dilatation $\delta$, which both have very different effects on images. 
 
 \subsection{Erosion \& Dilatation}
-In a mathematical point of view, erosion $\epsilon$ is defined as
-
-<<<<<<< HEAD
-\begin{equation*}
-I_{\delta}(p)=\delta I = \underset{p \in V}\min \text{ } I(p)
-\end{equation*}
-where $I(p)$ is the greyscale image. Therefore, erosion $\epsilon$ as the value of $p$ that minimizes $I(p)$ in a given neighbourhood. In analogy, dilatation is defined as:
-=======
-\subsection{Morphological Filtering}
-Morphological Filtering describes a technique that is closely related to operations on the morphology, or shape of structures and features within an image.
-
-Four general filters are the Opening, Closing, Top-Hat and Black-Hat Filters. The morphological opening filter is basically an erosion (\todo{add ref} ) followed by a dilatation - which allows to remove small bright spots (spots that are smaller than the structuring element that is defined by the user) and connect dark features. The closing filter is exactly the opposite.
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{images/morphFilter.png}
-	\caption{Morphological Filters}
-	\label{fig:morphFilt}
-\end{figure}
->>>>>>> ed89a73b1be4703f37b3f16ec0e472f92d46decc
+In a mathematical point of view, erosion $\epsilon$ is defined as(see \protect\footnotemark)  \footnotetext{source: lecture notes by Emmanuel Zenou}
+ 
 
 \begin{equation*}
 I_{\epsilon}(p)=\epsilon I = \underset{p \in V}\max \text{ } I(p)
 \end{equation*}
+
+where $I(p)$ is the greyscale image. Therefore, erosion $\epsilon$ is the value of $p$ that minimizes $I(p)$ in a given neighbourhood. In analogy, dilatation is defined as:
+
+\begin{equation*}
+\hat{I}_{\delta}(p)=\delta I = \underset{p \in V}\min \text{ } I(p)
+\end{equation*}
+
 
 To illustrate the effect of erosion and dilatation, we apply both within Matlab on the image shown in figure \ref{fig:bloodBW} . As one can see in figure \ref{fig:bloodBWeroded} , erosion smooths the boundaries between neighbouring objects, and therefore reduces the size of white objects in greyscale pictures. In contrast, dilataion reduces black objects in greyscale images, as visible in figure \ref{fig:bloodBWdilated}, which also results in a smoothening.
 
@@ -196,7 +184,7 @@ To illustrate the effect of erosion and dilatation, we apply both within Matlab 
 \end{figure}
 
 
-Those effects are also illustrated in figures \ref{fig:images1}  to \ref{fig:images1dilated}  applying erosion and dilation to the presented forms. Also a combination of both is shown in figures  , where the final result depends on the order in which the operations are applied. Nevertheless, one can see how erosion reduces white edges and thus smoothes the image, while dilataion reduces black edges and therefore also smoothes the image. 
+Those effects are also illustrated in figures \ref{fig:images1}  to \ref{fig:images1dilated}  applying erosion and dilation to the presented forms. Also a combination of both is shown in figures \ref{fig:images1erodeddilated} and \ref{fig:images1dilatederoded}, where the final result depends on the order in which the operations are applied. Nevertheless, one can see how erosion reduces white edges and thus smooths the image, while dilataion reduces black edges and therefore also smooths the image. 
 
 \begin{figure}[H]
 	\centering
@@ -210,7 +198,7 @@ Those effects are also illustrated in figures \ref{fig:images1}  to \ref{fig:ima
 	\begin{minipage}[t]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{images/images1eroded.png}
 		\caption{Effect of erosion}
-		\label{fig:bloodBWeroded}
+		\label{fig:images1eroded}
 	\end{minipage}
 	\begin{minipage}[t]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{images/images1dilated.png}
@@ -224,7 +212,7 @@ Those effects are also illustrated in figures \ref{fig:images1}  to \ref{fig:ima
 	\begin{minipage}[t]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{images/images1erodeddilated.png}
 		\caption{Effect of erosion and dilatation combined}
-		\label{fig:bloodBWerodeddilated}
+		\label{fig:images1erodeddilated}
 	\end{minipage}
 	\begin{minipage}[t]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{images/images1dilatederoded.png}
@@ -234,7 +222,7 @@ Those effects are also illustrated in figures \ref{fig:images1}  to \ref{fig:ima
 \end{figure}
 
 
-To further illustrate the effect of dilataion, we applied it to a map of Europe shown in figure \ref{fig:eumap}. Then, for that dilated image, the value of each pixel is compared to it's neighbouring one. By progressing this evaluation, a heat heat map results which indicates  the distance to the see (white in the original image), as shown in figure \ref{fig:euheatmap}.
+To further illustrate the effect of dilataion, we applied it to a map of Europe shown in figure \ref{fig:eumap}. Then, for that dilated image, the value of each pixel is compared to it's neighbouring one. By progressing this evaluation, a heat heat map results which indicates the distance to the sea (white in the original image), as shown in figure \ref{fig:euheatmap}.
 
 \begin{figure}[H]
 	\centering
@@ -249,6 +237,21 @@ To further illustrate the effect of dilataion, we applied it to a map of Europe 
 		\label{fig:euheatmap}
 	\end{minipage}
 \end{figure}
+
+\subsection{Morphological Filtering}
+Morphological Filtering describes a technique that is closely related to operations on the morphology, or shape of structures and features within an image.
+
+Four general filters are the Opening, Closing, Top-Hat and Black-Hat Filters. The morphological opening filter is basically an erosion (\todo{add ref} ) followed by a dilatation - which allows to remove small bright spots (spots that are smaller than the structuring element that is defined by the user) and connect dark features. The closing filter is exactly the opposite.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{images/morphFilter.png}
+	\caption{Morphological Filters}
+	\label{fig:morphFilt}
+\end{figure}
+
+
 
 
 %%%%%%%%%%%%%%%%% TASK 3 %%%
