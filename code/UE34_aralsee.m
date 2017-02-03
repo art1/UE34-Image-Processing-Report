@@ -34,24 +34,28 @@ water = segmented_images{2};
 seg2 = segmented_images{3};
 
 
-water_bw = im2bw(water,0.00000000000001);
+water_bw = im2bw(water,0.011);
 [r col] = size(water_bw);
 water_bw_reshaped =reshape(water_bw,1,r*col);
 
 cnt = 0;
 for i=1:length(water_bw_reshaped)
    if water_bw_reshaped(i) > 0.4
-       count = count +1;
+       cnt = cnt +1;
    end
 end
 
-area = count * (resolution*resolution)
+area = cnt * (resolution*resolution)
 
 
 
 figure, 
-subplot(2,2,1), imshow(uint8(he)), title('Aral sea - original');
-subplot(2,2,2), imshow(segmented_images{1}), title('objects in cluster 1');
-subplot(2,2,3), imshow(segmented_images{2}), title('objects in cluster 2');
-subplot(2,2,4), imshow(segmented_images{3}), title('objects in cluster 3');
+subplot(1,2,1), imshow(uint8(he)), title('Aral sea - original');
+%subplot(2,2,2), imshow(segmented_images{1}), title('objects in cluster 1');
+subplot(1,2,2), imshow(water_bw), title('detected water');
+%subplot(2,2,4), imshow(segmented_images{3}), title('objects in cluster 3');
+
+set(gcf, 'PaperUnits', 'points');
+set(gcf, 'PaperPosition', [0 0 900 500]);
+saveas(gcf,'../images/aral_bw.png');
 

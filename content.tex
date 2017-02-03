@@ -355,13 +355,13 @@ Applying this method on the image of the beach in Spain (see \cref{sssec:knn}), 
 
 One can observe that the clustering worked very well in detecting the sea, vegetation, and beach - even though there are again some smaller errors, e.g. the beach (cluster 3) also contains rooftops of houses nearby, and the waves in the original pictures are assigned to the vegetation (cluster 2) instead of to the water (cluster 1).
 
-In order to even further illustrate the use of the k-Means Algorithm, we apply it to an image of the Aral sea in Kasachstan as our own project in order to determine the surface area of the lake out of an image. This lake has a surface area of around  $17000\text{ m}^{2}$ (see \protect\footnotemark)  \footnotetext{source: \url{http://academic.emporia.edu/aberjame/student/sleezer2/Aral2.html}}. However, the lake suffered substantial water loss, especially in the year 2004 due to chemical polution. In our example, we analyse the image shown in figure  taken by Nasa's MODIS instrument in the year 2003. The image has a spatial resolution of $250$ m per pixel, therefore an area of one pixel contains a surface area of $62500\text{ m}^{2}$. With the k-means algorithm applied on the image for extracting the number of pixels that contain the blue lake, we find an area of   pixels, which therefore corresponds to an area of   $\text{m}^{2}$. 
+In order to even further illustrate the use of the k-Means Algorithm, we apply it to an image of the Aral sea in Kasachstan as our own project in order to determine the surface area of the lake out of an image. This lake has a surface area of around  $17000\text{km}^{2}$ (see \protect\footnotemark)  \footnotetext{source: \url{http://academic.emporia.edu/aberjame/student/sleezer2/Aral2.html}}. However, the lake suffered substantial water loss, especially in the year 2004 due to chemical pollution. In our example, we analyse the image shown in figure  taken by Nasa's MODIS instrument in the year 2003. The image has a spatial resolution of $250$ m per pixel, therefore an area of one pixel contains a surface area of $62500\text{ m}^{2}$. With the k-means algorithm applied on the image for extracting the number of pixels that contain the blue lake, we find an area of 217121 pixels, which therefore corresponds to an area of $13570\text{km}^{2}$ - an area that is comparable to the real one. However, our calculated is slightly lower since some of the outer smaller lakes were lost due to the binarization of the image (\cref{fig:aral_kmeans}, right side). This can be corrected by applying a lower threshold value (for binarization the MATLAB built-in function \texttt{im2bw} was used). 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.05]{images/aralsee250mperpixel.jpg}
+	\includegraphics[width=\textwidth]{images/aral_bw.png}
 	\caption{Image of aral sea taken by Mobis in 2003 \protect\footnotemark)  }
-	\label{fig:kmeans}
+	\label{fig:aral_kmeans}
 \end{figure}
 
   \footnotetext{source: \url{https://lance.modaps.eosdis.nasa.gov/cgi-bin/imagery/single.cgi?image=AralSea.A2003149.0920.721.1km.jpg}}
