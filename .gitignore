@@ -1,3 +1,6 @@
+### ignore compiled PDF file ###
+report.pdf
+
 ### Texpad ###
 .texpadtmp/
 .texpadtmp

@@ -30,6 +30,7 @@ size(Input(1,:))
 net = feedforwardnet([10 3]) ;
 net = train(net,Input,Targets) ;
 
+view(net)
 x = net(Input);
 
 plot(Input,x);
