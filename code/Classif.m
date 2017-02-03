@@ -31,10 +31,10 @@ for i = 1 : NbData
     end
 end
 
-figure, plot(PosData(:,1),PosData(:,2),'+b',NegData(:,1),NegData(:,2),'.r') ;
+figure, plot(PosData(:,1),PosData(:,2),'+b',NegData(:,1),NegData(:,2),'.r') 
 axis equal ;
 axis([-4 4 -4 4]) ;
-saveas(gcf,'AllData.png','png') ;
+%saveas(gcf,'AllData.png','png') ;
 
 %% Apprentissage
 

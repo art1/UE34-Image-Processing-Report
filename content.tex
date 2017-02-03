@@ -67,7 +67,7 @@ Supervised Classification describes a technique, where the classes a data-set co
 For this particular technique there is a great amount of algorithms available, be it kNN, Maximum Likelihood, Bayesian or Linear Classification, Support Vector Machines or Neural Networks. During the laboratory we focused on the kNN algorithm and neural networks in particular, which is why the following sections will provide examples using these techniques.
 
 \subsubsection{k - Nearest Neighbour}
-
+\label{sssec:knn}
 The \textit{k - Nearest Neighbour} algorithm is the most simple classification algorithm in the supervised classification domain. 
 
 \begin{figure}[h!]
@@ -82,6 +82,38 @@ This can be done of course for a range of RGB values, as is demonstrated in \cre
 
 
 \subsubsection{Neural Networks}
-A different approach of classifying data is using neural networks.
+A different approach of classifying data is by using neural networks. Neural Networks are layers of so-called \textit{neurons}, entities that provide a specific output given a specific input. By interconnecting those in- and outputs a network can be created.\\
+But for such a network to be usable, it has to be "trained" - which means that one has to provide input and the desired output for a set of data. According to those given in- and outputs the neurons in the network are assigned a specific "weight". This is done until the desired output for a given input occurs. After that, each neuron has been assigned a weight and the neural network is ready to use.
+\todo[inline]{get the matlab code running for this one}
+
+The main advantage of neural networks is that it is very easy to use and can be very efficient. But it also has some drawbacks as one has to provide the desired outcome for input data and the whole process is relying on stochastic. 
 
 \subsection{Unsupervised Classification}
+Contrary to Supervised Classification the Unsupervised one does not need a pre-processing of data in terms of classifying example input data. The aim of Unsupervised Classification is to find classes in a given data-set (\textit{Clustering}), model the data (\textit{Regression}) and reduce the state space (\textit{Dimension Reduction}).\\
+For this type of classification there is also a variety of algorithms existing, e.g. the \textit{k-Means} or the \textit{Kohonen Maps} algorithm.
+
+\subsubsection{k-Means Algorithm} 
+
+The k-Means Algorithm is used for Clustering given data into a previously known amount of clusters. It tries to group the data into classes, such as the sum of squared deviations is minimised. Mathematically speaking, this means minimising the cost function
+\begin{equation*}
+	\centering
+	J = \sum_{i=1}^k \sum_{{x_j}\in{S_i}} \norm{x_j - \mu_i}^2
+\end{equation*}
+
+with $x_j$ being the distinct data points and $\mu_i$ the "Centroid" of a cluster $S_i$. This results in so-called \textit{Voronoi}-diagrams in the data space - which essentially means that the data points are divided in cells where the centroid is equally spaced with respect to the borders of the cell.\\
+Applying this method on the image of the beach in Spain (see \cref{sssec:knn}), we can get a result as shown in \cref{fig:kmeans}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{images/kMeans.png}
+	\caption{k-Means Algorithm to detect three Clusters of data}
+	\label{fig:kmeans}
+\end{figure}
+
+One can observe that the clustering worked very well in detecting the sea, vegetation, and beach - even though there are again some smaller errors, e.g. the beach (cluster 3) also contains rooftops of houses nearby, and the waves in the original pictures are assigned to the vegetation (cluster 2) instead of to the water (cluster 1).
+
+
+
+
+
+
