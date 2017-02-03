@@ -142,13 +142,98 @@ Understanding the handling between image space and fourier space is useful for i
 
 
 %%%%%%%%%%%%%%%%% TASK 3 %%%
-\section{Computer Vision \& Morphology}
+\section{Morphology}
+Morphological operators are applied t detect forms in an image. For this, one can use erosion $\epsilon$ and dilatation $\delta$, which both have very different effects on images. 
 
 \subsection{Erosion \& Dilatation}
+In a mathematical point of view, erosion $\epsilon$ is defined as
 
-\subsection{Morphological Filtering}
+\begin{equation*}
+I_{\delta}(p)=\delta I = \underset{p \in V}\min \text{ } I(p)
+\end{equation*}
+where $I(p)$ is the greyscale image. Therefore, erosion $\epsilon$ as the value of $p$ that minimizes $I(p)$ in a given neighbourhood. In analogy, dilatation is defined as:
 
-\subsection{Morphological Skeletonization \& Segmentation}
+\begin{equation*}
+I_{\epsilon}(p)=\epsilon I = \underset{p \in V}\max \text{ } I(p)
+\end{equation*}
+
+To illustrate the effect of erosion and dilatation, we apply both within Matlab on the image shown in figure \ref{fig:bloodBW} . As one can see in figure \ref{fig:bloodBWeroded} , erosion smooths the boundaries between neighbouring objects, and therefore reduces the size of white objects in greyscale pictures. In contrast, dilataion reduces black objects in greyscale images, as visible in figure \ref{fig:bloodBWdilated}, which also results in a smoothening.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.5]{images/bloodBW.png}
+		\caption{Original image}
+		\label{fig:bloodBW}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/bloodBWeroded.png}
+		\caption{Effect of erosion}
+		\label{fig:bloodBWeroded}
+	\end{minipage}
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/bloodBWdilated.png}
+		\caption{Effect of dilatation}
+		\label{fig:bloodBWdilated}
+	\end{minipage}
+\end{figure}
+
+
+Those effects are also illustrated in figures \ref{fig:images1}  to \ref{fig:images1dilated}  applying erosion and dilation to the presented forms. Also a combination of both is shown in figures  , where the final result depends on the order in which the operations are applied. Nevertheless, one can see how erosion reduces white edges and thus smoothes the image, while dilataion reduces black edges and therefore also smoothes the image. 
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.2]{images/Images1.jpg}
+		\caption{Original image}
+		\label{fig:images1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/images1eroded.png}
+		\caption{Effect of erosion}
+		\label{fig:bloodBWeroded}
+	\end{minipage}
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/images1dilated.png}
+		\caption{Effect of dilatation}
+		\label{fig:images1dilated}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/images1erodeddilated.png}
+		\caption{Effect of erosion and dilatation combined}
+		\label{fig:bloodBWerodeddilated}
+	\end{minipage}
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/images1dilatederoded.png}
+		\caption{Effect of dilatation an erosion combined}
+		\label{fig:images1dilatederoded}
+	\end{minipage}
+\end{figure}
+
+
+To further illustrate the effect of dilataion, we applied it to a map of Europe shown in figure \ref{fig:eumap}. Then, for that dilated image, the value of each pixel is compared to it's neighbouring one. By progressing this evaluation, a heat heat map results which indicates  the distance to the see (white in the original image), as shown in figure \ref{fig:euheatmap}.
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/eumap.png}
+		\caption{Original map of Europe.}
+		\label{fig:eumap}
+	\end{minipage}
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/euheatmap.png}
+		\caption{Heat map of Europe showing distances to see after dilatation.}
+		\label{fig:euheatmap}
+	\end{minipage}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%% TASK 3 %%%
