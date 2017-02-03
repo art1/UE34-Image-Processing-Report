@@ -147,6 +147,17 @@ Understanding the handling between image space and fourier space is useful for i
 \subsection{Erosion \& Dilatation}
 
 \subsection{Morphological Filtering}
+Morphological Filtering describes a technique that is closely related to operations on the morphology, or shape of structures and features within an image.
+
+Four general filters are the Opening, Closing, Top-Hat and Black-Hat Filters. The morphological opening filter is basically an erosion (\todo{add ref} ) followed by a dilatation - which allows to remove small bright spots (spots that are smaller than the structuring element that is defined by the user) and connect dark features. The closing filter is exactly the opposite.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{images/morphFilter.png}
+	\caption{Morphological Filters}
+	\label{fig:morphFilt}
+\end{figure}
 
 \subsection{Morphological Skeletonization \& Segmentation}
 
