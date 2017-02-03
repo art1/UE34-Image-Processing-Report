@@ -6,7 +6,8 @@ Image processing and the analysis of image data plays an important role especial
 From a mathematical point of view, an image is an application that associates a value $I(u,v)$ to a pixel $(u,v)$. Pixels are atomic elements arranged in rows and columns,  such that the size of an image is given by the number of rows and the number of columns. Therefore, an image can be processed by using a matrix representation, where each matrix element $(u,v)$  represents a pixel containing the value $I(u,v)$ of the pixel.. In the case of multispectral images, i.e. colour images like RGB images (see following chapter), an image is an application that associates saveral values, e.g. $I_{1}(u,v)$ $I_{2}(u,v)$ and $I_{3}(u,v)$ to a pixel $(u,v)$, where the values $I_{i}$ represent a different colour like red, green and blue in RGB images. Therefore, each matrix element $(u,v)$ contains a vector of values. This matrix notation is the basic of image processing using Matlab.
 
 \section{Greyscale and Colour images}
-The understanding of colour images and the connection to their greyscale representation are fundamental for image analysis and image processing. We illustrate colour images in this section by  considering the examples of RGB and HVS colour space. There are also other colour spaces like CYMK (cyan, yellow, magenta, black) or YUV, but we only consider the first two in our examples since these are the most frequently used ones and essential for the understanding of coloured images. CYMK and YUV are mainly based on the first two colour spaces.
+The understanding of colour images and the connection to their greyscale representation are fundamental for image analysis and image processing. We illustrate colour images in this section by  considering the examples of RGB and HSV colour space. There are also other colour spaces like CYMK (cyan, yellow, magenta, black) or YUV, but we only consider the first two in our examples since these are the most frequently used ones and essential for the understanding of coloured images. CYMK and YUV are mainly based on the first two colour spaces.
+
 \subsection{Greyscale Images}
 Greyscale images are basic images where the value of each pixel e.g. is associated to a value between 0, which is black, to 1 for bright. An example including an optical illusion is presented in image \ref{fig:greyillusion}. For this image, a $512\times 1024$ matrix was created in Matlab, first being black by associating a zero to each element, but then was filled with increasing values from 0 to 1 along each line. in the middle of the image, a stripe of  constant values %0.5% was created. By just concentrating on the upper and lower part of the image, one can see how the brightness increases from left to right. Although the middle layer consists of the same greyscale value for the individual pixels, it appears to be brighter in on the left and darker on the right. This is an optical illusion created by the increasing brightness from left to right of the upper and lower part.
 
@@ -27,8 +28,23 @@ As mentioned before, in the case of a color image, 3 values are associated to ea
 		\label{fig:germanflag}
 \end{figure}
 
-\subsection{HVS Colour Space}
+\subsection{HSV Colour Space}
+The HSV colour space consists of a value for hue ($H$), which is a value for the colour or wavelength running from 0 to 1, saturation ($S$ ) for that  colour also running from 0 to 1, and the value ($V$) describing the darkness or brightness. To illustrate this, the image \ref{fig:colourscalehsv} was created. A matrix of $512\times750$ elements was created. For each line, the $h$ value increases from left with 0 to right with 1, resulting in different colours for a spectrum along each line. For each column, the S value varies from 0 at the top of the image to 1 at the bottom. However, for all elements a brightness value of $V=1$ was chosen.
 
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/colourscalevhs.png}
+		\caption{Illustration of HSV colour space.}
+		\label{fig:colourscalehsv}
+	\end{minipage}
+	\begin{minipage}[t]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/colourwheelvhs}
+		\caption{Illustration of HSV colour space in a colour wheel.}
+		\label{fig:colourwheelhsv}
+	\end{minipage}
+\end{figure}
+As an additional illustration, the HSV colour space is represented in the colour wheel shown in figure \ref{fig:colourwheelhsv}. Inside the wheel, the saturation gradually increases from inside to outside, while the hue value depends on the angle in the circle. Inside the circle, the brightness is chosen as a constant with $V=1$, while it is set to $0$ outside, resulting in the black frame around the circle.
 
 \subsection{Filtering}
 
