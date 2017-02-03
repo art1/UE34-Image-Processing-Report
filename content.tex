@@ -342,6 +342,9 @@ Applying this method on the image of the beach in Spain (see \cref{sssec:knn}), 
 
 One can observe that the clustering worked very well in detecting the sea, vegetation, and beach - even though there are again some smaller errors, e.g. the beach (cluster 3) also contains rooftops of houses nearby, and the waves in the original pictures are assigned to the vegetation (cluster 2) instead of to the water (cluster 1).
 
+In order to even further illustrate the use of the k-Means Algorithm, we apply it to an image of the Aral sea in Kasachstan as our own project in order to determine the surface area of the lake out of an image. This lake has a surface area of around  $17000m^{2}$ (see \protect\footnotemark)  \footnotetext{source: \url{http://academic.emporia.edu/aberjame/student/sleezer2/Aral2.html}}. However, the lake suffered substantial water loss, especially in the year 2004 due to chemical polution. In our example, we analyse the image shown in figure  taken by Nasa's MODIS instrument. The image has a spatial resolution of $250$ m per pixel, therefore an area of one pixel contains a surface area of $62500\text{m}^{2}$. With the k-means algorithm applied on the image for extracting the number of pixels that contain the blue lake, we find an area of   pixels, which therefore corresponds to an area of   $\text{m}^{2}$. 
+ 
+
 
 
 \subsubsection{Dimension Reduction}
