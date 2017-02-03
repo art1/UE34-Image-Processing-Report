@@ -146,7 +146,8 @@ Understanding the handling between image space and fourier space is useful for i
 Morphological operators are applied to detect forms in an image. For this, one can use erosion $\epsilon$ and dilatation $\delta$, which both have very different effects on images. 
 
 \subsection{Erosion \& Dilatation}
-In a mathematical point of view, erosion $\epsilon$ is defined as(see \protect\footnotemark)  \footnotetext{source: lecture notes by Emmanuel Zenou}
+\label{ssec:erodil}
+From a mathematical point of view, erosion $\epsilon$ is defined as(see \protect\footnotemark)  \footnotetext{source: lecture notes by Emmanuel Zenou}
  
 
 \begin{equation*}
@@ -216,7 +217,7 @@ Those effects are also illustrated in figures \ref{fig:images1}  to \ref{fig:ima
 	\end{minipage}
 	\begin{minipage}[t]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{images/images1dilatederoded.png}
-		\caption{Effect of dilatation an erosion combined}
+		\caption{Effect of dilatation and erosion combined}
 		\label{fig:images1dilatederoded}
 	\end{minipage}
 \end{figure}
@@ -241,16 +242,28 @@ To further illustrate the effect of dilataion, we applied it to a map of Europe 
 \subsection{Morphological Filtering}
 Morphological Filtering describes a technique that is closely related to operations on the morphology, or shape of structures and features within an image.
 
-Four general filters are the Opening, Closing, Top-Hat and Black-Hat Filters. The morphological opening filter is basically an erosion (\todo{add ref} ) followed by a dilatation - which allows to remove small bright spots (spots that are smaller than the structuring element that is defined by the user) and connect dark features. The closing filter is exactly the opposite.
+Four general filters are the Opening, Closing, Top-Hat and Bottom-Hat Filters. The morphological opening filter is basically an erosion (\cref{ssec:erodil}) followed by a dilatation - which allows to remove small bright spots (spots that are smaller than the structuring element that is defined by the user) and connect dark features. The closing filter is exactly the opposite. The effect of these filters can be seen in \cref{fig:images1dilatederoded} respectively in \cref{fig:images1erodeddilated}.
 
+The main difference of Top- and Bottom-Hat filters compared to Opening and Closing filters, is that the Top-Hat filter is basically the morphological opening subtracted from the original image, whereas the Bottom-Hat filter returns the morphological closing subtracted from the original image.\\
+For the Top-Hat filter this will return an image with only bright spots, that are smaller than the structuring elements and for the Bottom-Hat filter the opposite (dark spots smaller than the structuring element). This is why the Top- and Bottom-Hat filters are also called White-Hat respectively Black-Hat filters.
 
-\begin{figure}[H]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{images/morphFilter.png}
-	\caption{Morphological Filters}
+	\caption{Top and Bottom-Hat Morphological Filters}
 	\label{fig:morphFilt}
 \end{figure}
 
+
+\subsection{Morphological Skeletonization}
+Using Skeletonization  differs from filters in their approach of treating the input data.\\
+Skeletonization of an image will return a "Skeleton"-representation, meaning all features or objects in the image will be reduced to lines. This can be clearly seen in \cref{fig:skelet}. Usually this kind algorithm can be used to for example structure data
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{images/morphSkelet.png}
+	\caption{morphological Skeletonization}
+	\label{fig:skelet}
+\end{figure}
 
 
 
@@ -314,7 +327,7 @@ This can be done of course for a range of RGB values, as is demonstrated in \cre
 \subsubsection{Neural Networks}
 A different approach of classifying data is by using neural networks. Neural Networks are layers of so-called \textit{neurons}, entities that provide a specific output given a specific input. By interconnecting those in- and outputs a network can be created.\\
 But for such a network to be usable, it has to be "trained" - which means that one has to provide input and the desired output for a set of data. According to those given in- and outputs the neurons in the network are assigned a specific "weight". This is done until the desired output for a given input occurs. After that, each neuron has been assigned a weight and the neural network is ready to use.
-\todo[inline]{get the matlab code running for this one}
+%\todo[inline]{get the matlab code running for this one}
 
 The main advantage of neural networks is that it is very easy to use and can be very efficient. But it also has some drawbacks as one has to provide the desired outcome for input data and the whole process is relying on stochastic. 
 
@@ -356,8 +369,7 @@ In order to even further illustrate the use of the k-Means Algorithm, we apply i
 
 
 \subsubsection{Dimension Reduction}
-If the data to be analysed has a huge i.e. the data dimension is too big (in images this corresponds to large images), one has to reduce the data dimension to reduce the computational amount to find clusters or classes in the data. This is usually done using a technique called \textit{Principal Component Analysis} or in short PCA, where the input data is linearly mapped to new data that has a reduced state space. In practical terms this is usually done by calculating the covariance matrix and its eigenvectors. The eigenvectors corresponding to the largest eigenvalues (also called the principal components) can then be used to reconstruct a great part of the original image.
-\todo[inline]{put in some MATLAB Code and images here for PCA}
+If the data to be analysed has a huge i.e. the data dimension is too big (in images this corresponds to large images), one has to reduce the data dimension to reduce the computational amount of finding clusters or classes in the data. This is usually done using a technique called \textit{Principal Component Analysis} or in short PCA, where the input data is linearly mapped to new data that has a reduced state space. In practical terms this is usually done by calculating the covariance matrix and its eigenvectors. The eigenvectors corresponding to the largest eigenvalues (also called the principal components) can then be used to reconstruct a great part of the original image.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
