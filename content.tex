@@ -2,10 +2,14 @@
 \section{Introduction - Image Processing for Earth Observation}
 Image processing and the analysis of image data plays an important role especially for Earth Observations, but also in other fields related to space applications that make use of images, e.g. optical navigation or optical attitude control systems. In this report, we present a thorough overview of examples for image processing techniques, especially applying examples in Matlab. We focus on colour spaces for images, fourier transforms of basic figures, erosion and delatation and classification. 
 
-\subsection{Space Imagery}
-
 \subsection{Computer Vision}
+From a mathematical point of view,an Image is an application that associates a value $I(u,v)$ to a pixel $(u,v)$. Pixels are atomic elements arranged in rows and columns,  such that the size of an image is given by the number of rows and the number of columns. Therefore, an image can be processed by using a matrix representation, where each matrix element $(u,v)$  represents a pixel containing the value $I(u,v)$ of the pixel.. In the case of multispectral images, i.e. colour images like RGB images (see following chapter), an image is an application that associates saveral values, e.g. $I_{1}(u,v)$ $I_{2}(u,v)$ and $I_{3}(u,v)$ to a pixel $(u,v)$, where the values $I_{i}$ represent a different colour like red, green and blue in RGB images. Therefore, each matrix element $(u,v)$ contains a vector of values. This matrix notation is the basic of image processing using Matlab.
 
+\section{Greyscale and Colour images}
+
+
+
+ 
 \subsection{Filtering}
 
 \subsection{Image Processing \& Analysis}
